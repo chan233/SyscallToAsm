@@ -56,8 +56,7 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "重新打开已关闭的编辑器(&&R)",
-                                    "enabled": false
+                                    "label": "重新打开已关闭的编辑器(&&R)"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
