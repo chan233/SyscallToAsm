@@ -688,6 +688,10 @@
                         "label": "扩展(&&X)"
                     },
                     {
+                        "id": "workbench.view.extension.test",
+                        "label": "测试(&E)"
+                    },
+                    {
                         "id": "vscode.menubar.separator"
                     },
                     {
@@ -724,8 +728,7 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "返回(&&B)",
-                        "enabled": false
+                        "label": "返回(&&B)"
                     },
                     {
                         "id": "workbench.action.navigateForward",
