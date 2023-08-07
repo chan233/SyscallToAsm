@@ -494,7 +494,8 @@
                                 },
                                 {
                                     "id": "workbench.action.togglePanel",
-                                    "label": "面板(&&P)"
+                                    "label": "面板(&&P)",
+                                    "checked": true
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -615,6 +616,13 @@
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
+                                    "id": "workbench.action.splitEditorInGroup",
+                                    "label": "在组中拆分(&&G)"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
                                     "id": "workbench.action.editorLayoutSingle",
                                     "label": "单列(&&S)"
                                 },
@@ -726,8 +734,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "上次编辑位置(&&L)",
-                        "enabled": false
+                        "label": "上次编辑位置(&&L)"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1043,8 +1050,7 @@
                     },
                     {
                         "id": "workbench.action.terminal.split",
-                        "label": "拆分终端(&&S)",
-                        "enabled": false
+                        "label": "拆分终端(&&S)"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1395,6 +1401,11 @@
                 "label": "Ctrl+K Ctrl+\\",
                 "isNative": false,
                 "userSettingsLabel": "ctrl+k ctrl+\\"
+            },
+            "workbench.action.splitEditorInGroup": {
+                "label": "Ctrl+K Ctrl+Shift+\\",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
             },
             "workbench.action.toggleEditorGroupLayout": {
                 "label": "Shift+Alt+0",
