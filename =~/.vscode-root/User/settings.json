@@ -1,0 +1,8 @@
+{
+    "window.zoomLevel": 3,
+    "workbench.colorTheme": "Visual Studio 2017 Dark - C++",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "explorer.confirmDelete": false
+}
