@@ -714,7 +714,8 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "自动换行(&&W)"
+                        "label": "自动换行(&&W)",
+                        "enabled": false
                     },
                     {
                         "id": "editor.action.toggleStickyScroll",
@@ -1662,9 +1663,9 @@
             "folder": "file:///root/Desktop/project/git/SyscallToAsm",
             "backupPath": "/root/Desktop/project/git/SyscallToAsm/=~/.vscode-root/Backups/47976001447c6c1ac4018613edd65435",
             "uiState": {
-                "mode": 0,
-                "x": 0,
-                "y": 62,
+                "mode": 1,
+                "x": 1216,
+                "y": 324,
                 "width": 2160,
                 "height": 1378
             }
