@@ -714,8 +714,7 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "自动换行(&&W)",
-                        "enabled": false
+                        "label": "自动换行(&&W)"
                     },
                     {
                         "id": "editor.action.toggleStickyScroll",
