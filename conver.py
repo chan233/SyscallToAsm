@@ -2,10 +2,12 @@
 import os
 import re
 import subprocess
+import someinclude
 output_lines = list()
-your_aosp810r1_path = '/root/Desktop/aospmount/aosp/anroid8.1/aosp810r1/aosp810r1/'
-asmcode_path = your_aosp810r1_path+'bionic/libc/arch-arm/syscalls/'
-headers_path = your_aosp810r1_path + \
+aosp_path = 'aosp810r1/'
+asmcode_path = aosp_path+\
+    'bionic/libc/arch-arm/syscalls/'
+headers_path = aosp_path + \
     'bionic/libc/kernel/uapi/asm-arm/asm/unistd-common.h'
 
 
@@ -61,8 +63,8 @@ def find_function_prototype(func_name):
   
     #func_name = 'exit'
     command = 'grep -A2 -r -e " {}(" \
-        /root/Desktop/aospmount/aosp/anroid8.1/aosp810r1/aosp810r1/bionic/libc/include/'\
-            .format(func_name.replace("_", ''))
+                {}bionic/libc/include/'\
+            .format(func_name.replace("_", ''),aosp_path)
     result = subprocess.run(command, shell=True,
                             text=True, stdout=subprocess.PIPE)
     global output_lines
@@ -106,7 +108,7 @@ def process_header():
 
 
 def write_headers(headers):
-    with open('warp_syscall.S', 'a') as f:
+    with open('output/warp_syscall.S', 'a') as f:
         f.write('\t.text\r\n')
         f.write('\t.set __ARM_NR_cacheflush , 2\r\n')
         f.write('\t.set __ARM_NR_set_tls , 5\r\n')
@@ -138,7 +140,7 @@ def process(asm_files):
 
 
 def write_asm_file(lines, functionname, start, end):
-    with open('warp_syscall.S', 'a') as f:
+    with open('output/warp_syscall.S', 'a') as f:
         f.write('\r\n')
         f.write('\t'+'.global {}\r\n'.format(functionname))
         f.write('\t'+'.type {}, %function\r\n'.format(functionname))
@@ -148,13 +150,12 @@ def write_asm_file(lines, functionname, start, end):
         f.write('\t.cfi_endproc\r\n')
 
 
-def write_header_file(output_lines):
-    with open('warp_syscall.h', 'w') as f:
-        f.write('#ifndef MAIN_ASM_SYSCALL_H\r\n')
-        f.write('#define MAIN_ASM_SYSCALL_H\r\n')
-        f.write('#include <linux/capability.h>\r\n#include <sys/wait.h>\r\n#include <sys/poll.h>\r\n#include <sys/syscall.h>\r\n#include <unistd.h>\r\n#include <linux/net.h>\r\n#include <sys/socket.h>\r\n#include <sched.h>\r\n#ifdef __i386__\r\n# define __socketcall extern __attribute__((__cdecl__))\r\n#else\r\n# define __socketcall extern\r\n#endif\r\n#if defined(__clang__) && defined(__BIONIC_FORTIFY)\r\n#  define __overloadable __attribute__((overloadable))\r\n#  define __RENAME_CLANG(x) __RENAME(x)\r\n#else\r\n#  define __overloadable\r\n#  define __RENAME_CLANG(x)\r\n#endif\r\n')
-        f.writelines(output_lines)
-        f.write('#endif\r\n')
+def write_header_file(functions_def):
+    with open('output/warp_syscall.h', 'w') as f:
+        f.write(someinclude.progam_once)
+        f.write(someinclude.include)
+        f.writelines(functions_def)
+        f.write(someinclude.progam_once_end)
 
 
 asm_files = get_asm_files()

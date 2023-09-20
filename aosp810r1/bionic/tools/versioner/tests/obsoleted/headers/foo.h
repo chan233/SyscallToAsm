@@ -1,1 +1,0 @@
-int foo() __INTRODUCED_IN(9) __REMOVED_IN(11);
