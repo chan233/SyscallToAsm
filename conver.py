@@ -130,16 +130,16 @@ def process(asm_files):
                 if 'bxls' in line:
                     end = index
         
-        
         functionname = (asm_file.split(
                 '/')[-1].replace('.S', ''))
         
         find_function_prototype(functionname)
 
-        write_asm_file(lines, 'warp_'+functionname, start, end)
+        write_asm_file(lines, functionname, start, end)
 
 
 def write_asm_file(lines, functionname, start, end):
+    functionname = 'warp_'+functionname
     with open('output/warp_syscall.S', 'a') as f:
         f.write('\r\n')
         f.write('\t'+'.global {}\r\n'.format(functionname))
